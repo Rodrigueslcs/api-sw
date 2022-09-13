@@ -1,6 +1,7 @@
 package server
 
 import (
+	"api-sw/server/config"
 	"api-sw/src/shared/providers/logger"
 	"fmt"
 	"html"
@@ -23,8 +24,10 @@ func New() *server {
 	}
 }
 
-func (s server) Run(log logger.ILoggerProvider) error {
+func (s server) Run(cfg config.Config, log logger.ILoggerProvider) error {
 	log.Info("server.main.Run", fmt.Sprintf("Server running on port : %d", s.Port))
+	log.Info("server.main.Run", fmt.Sprintf("Environment : %s", cfg.Environment))
+	log.Info("server.main.Run", fmt.Sprintf("Version : %s", cfg.Version))
 
 	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "Hello, %q", html.EscapeString(r.URL.Path))
@@ -41,23 +44,25 @@ func (s server) Run(log logger.ILoggerProvider) error {
 		Handler: router,
 	}
 
-	if err := s.httpServer.ListenAndServe(); err != nil {
-		if err == http.ErrServerClosed {
+	go func() {
+		if err := s.httpServer.ListenAndServe(); err != nil {
+			if err == http.ErrServerClosed {
+			}
+
+		} else {
+			fmt.Println(err)
 		}
+		process, err := os.FindProcess(os.Getegid())
 
-	} else {
-		fmt.Println(err)
-	}
-	process, err := os.FindProcess(os.Getegid())
-
-	if err != nil {
-		fmt.Println("couldn't find process to exit")
-		os.Exit(1)
-	}
-	if err := process.Signal(os.Interrupt); err != nil {
-		fmt.Println("couldn't find process to exit")
-		os.Exit(1)
-	}
+		if err != nil {
+			fmt.Println("couldn't find process to exit")
+			os.Exit(1)
+		}
+		if err := process.Signal(os.Interrupt); err != nil {
+			fmt.Println("couldn't find process to exit")
+			os.Exit(1)
+		}
+	}()
 
 	return nil
 }

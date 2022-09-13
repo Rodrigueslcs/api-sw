@@ -2,6 +2,7 @@ package cmd
 
 import (
 	"api-sw/server"
+	"api-sw/server/config"
 	"api-sw/src/shared/providers/logger"
 	"os/signal"
 
@@ -12,7 +13,6 @@ import (
 )
 
 var (
-	brandName   string
 	environment string
 	version     string
 	port        string
@@ -27,10 +27,8 @@ var (
 func init() {
 	godotenv.Load()
 
-	apiCmd.PersistentFlags().StringVarP(&brandName, "brand", "b", os.Getenv("BRAND"), "")
 	apiCmd.PersistentFlags().StringVarP(&version, "version", "v", os.Getenv("VERSION"), "")
 	apiCmd.PersistentFlags().StringVarP(&environment, "environment", "e", os.Getenv("ENV"), "")
-	apiCmd.PersistentFlags().StringVarP(&port, "port", "p", "0000", "")
 
 	rootCmd.AddCommand(apiCmd)
 }
@@ -39,10 +37,17 @@ func run(cmd *cobra.Command, args []string) {
 	log := logger.New()
 	srv := server.New()
 
-	if err := srv.Run(log); err != nil {
+	cfg, err := config.ReadConfigFromEnv(environment, version)
+	if err != nil {
+		panic(err)
+	}
+
+	if err := srv.Run(cfg, log); err != nil {
 		panic(err)
 	}
 
 	chanExit := make(chan os.Signal, 1)
 	signal.Notify(chanExit, os.Interrupt)
+	<-chanExit
+
 }
