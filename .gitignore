@@ -1,0 +1,5 @@
+.vscode/
+.docker/
+build/
+api-sw
+.dccache
