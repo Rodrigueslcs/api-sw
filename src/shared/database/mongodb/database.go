@@ -1,7 +1,7 @@
 package mongodb
 
 import (
-	"api-sw/server/config"
+	"api-sw/src/server/config"
 	"context"
 	"fmt"
 	"html"
