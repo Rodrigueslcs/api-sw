@@ -8,10 +8,10 @@ import (
 )
 
 type Dto struct {
-	Name        string `json:"name" validate:"required"`
-	Climate     string `json:"climate" validate:"required"`
-	Terrain     string `json:"terrain" validate:"required"`
-	Apparitions int    `json:"apparitions"`
+	Name    string `json:"name" validate:"required"`
+	Climate string `json:"climate" validate:"required"`
+	Terrain string `json:"terrain" validate:"required"`
+	// Apparitions int    `json:"apparitions"`
 }
 
 type Service struct {

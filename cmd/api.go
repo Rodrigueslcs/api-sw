@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"api-sw/server"
-	"api-sw/server/config"
+	"api-sw/src/server"
+	"api-sw/src/server/config"
 	"api-sw/src/shared/providers/logger"
 	"os/signal"
 
