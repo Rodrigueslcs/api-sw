@@ -42,6 +42,8 @@ func (response *ResponseMapping) populate() {
 	data := make(map[string]mapItem)
 	data["already_exist"] = mapItem{Message: "Alread exists", Code: 100000}
 	data["success_create"] = mapItem{Message: "Record successfully created", Code: 100009}
+	data["validate_failed"] = mapItem{Message: "Validation failed", Code: 100018}
+	data["error_create"] = mapItem{Message: "Unable to create record", Code: 100012}
 
 	response.Mapping = data
 }
