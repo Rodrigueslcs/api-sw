@@ -1,0 +1,2 @@
+mock:
+	devstuffs/mock.sh

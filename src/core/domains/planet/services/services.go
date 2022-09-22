@@ -9,7 +9,7 @@ import (
 
 type Dependecies struct {
 	Context    context.Context
-	Repository repositories.IUserRepository
+	Repository repositories.IPlanetRepository
 	Logger     logger.ILoggerProvider
 }
 
@@ -17,7 +17,7 @@ type Services struct {
 	Create create.Service
 }
 
-func NewUser(dep Dependecies) *Services {
+func NewPlanet(dep Dependecies) *Services {
 	return &Services{
 		Create: create.Service{
 			Repository: dep.Repository,

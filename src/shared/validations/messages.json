@@ -1,0 +1,124 @@
+{
+	"messages": {
+		"already_exists": {
+			"Message": "Already exists",
+			"Code": 100000
+		},
+		"validate_required": {
+			"Message": "Required",
+			"Code": 100001
+		},
+		"validate_invalid": {
+			"Message": "Invalid",
+			"Code": 100002
+		},
+		"validate_email": {
+			"Message": "Invalid e-mail",
+			"Code": 100003
+		},
+		"validate_date": {
+			"Message": "Invalid date",
+			"Code": 100004
+		},
+		"validate_password_length": {
+			"Message": "Password must be between 6 and 40 characters.",
+			"Code": 100005
+		},
+		"success": {
+			"Message": "Success",
+			"Code": 100006
+		},
+		"not_found": {
+			"Message": "Not found",
+			"Code": 100007
+		},
+		"error": {
+			"Message": "Error",
+			"Code": 100008
+		},
+		"success_create": {
+			"Message": "Record successfully created",
+			"Code": 100009
+		},
+		"success_update": {
+			"Message": "Registro atualizado com sucesso",
+			"Code": 100010
+		},
+		"success_delete": {
+			"Message": "Record successfully deleted",
+			"Code": 100011
+		},
+		"error_create": {
+			"Message": "Unable to create record",
+			"Code": 100012
+		},
+		"error_update": {
+			"Message": "Unable to update record",
+			"Code": 100013
+		},
+		"error_delete": {
+			"Message": "Unable to delete record",
+			"Code": 100014
+		},
+		"error_list": {
+			"Message": "Unable to list record",
+			"Code": 100015
+		},
+		"authenticate_failed": {
+			"Message": "Authenticate failed",
+			"Code": 100016
+		},
+		"authenticate_success": {
+			"Message": "Authenticate success",
+			"Code": 100017
+		},
+		"validate_failed": {
+			"Message": "Validation failed",
+			"Code": 100018
+		},
+		"endpoint_not_found": {
+			"Message": "Endpoint not found",
+			"Code": 100019
+		},
+		"unexpected": {
+			"Message": "Unexpected",
+			"Code": 100020
+		},
+		"error_extract_token": {
+			"Message": "Token not found",
+			"Code": 100021
+		},
+		"error_check_token": {
+			"Message": "Invalid token",
+			"Code": 100022
+		},
+		"user_not_found": {
+			"Message": "User not found",
+			"Code": 100023
+		},
+		"email_send_successfully": {
+			"Message": "E-mail enviado com sucesso",
+			"Code": 100023
+		},
+		"validate_new_password_to_old": {
+			"Message": "A nova senha não pode ser igual a senha atual",
+			"Code": 100024
+		},
+		"validate_new_password_compare": {
+			"Message": "As senhas não coincidem",
+			"Code": 100025
+		},
+		"invalid_integer": {
+			"Message": "Invalid integer",
+			"Code": 100026
+		},
+		"greater_or_equal_than": {
+			"Message": "Deve ser maior ou igual à",
+			"Code": 100027
+		},
+		"less_or_equal_than": {
+			"Message": "Deve ser menor ou igual à",
+			"Code": 100028
+		}
+	}
+}
