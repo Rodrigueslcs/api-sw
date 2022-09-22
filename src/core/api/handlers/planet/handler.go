@@ -2,6 +2,7 @@ package planet
 
 import (
 	"api-sw/src/core/domains/planet/services"
+	"api-sw/src/infra/repositories/mongodb/planet"
 	"api-sw/src/shared/providers/logger"
 	"api-sw/src/shared/tools/communication"
 	"api-sw/src/shared/tools/namespace"
@@ -26,12 +27,13 @@ func NewHandler(logger logger.ILoggerProvider) handler {
 }
 
 func (h handler) Service(ctx context.Context) *services.Services {
+	planetRepository := planet.Setup(ctx)
 
 	dependencies := services.Dependecies{
 		Context:    ctx,
-		Repository: nil,
+		Repository: planetRepository,
 		Logger:     logger.New(),
 	}
 
-	return services.NewUser(dependencies)
+	return services.NewPlanet(dependencies)
 }
