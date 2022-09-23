@@ -13,7 +13,8 @@ import (
 var Namespace = namespace.New("core.api.handlers.planet")
 
 type IHandler interface {
-	CreateHandler(r *http.Request) communication.Response
+	CreatePlanetHandler(r *http.Request) communication.Response
+	ListPlanetHandler(r *http.Request) communication.Response
 }
 
 type handler struct {

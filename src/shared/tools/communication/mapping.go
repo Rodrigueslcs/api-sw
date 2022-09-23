@@ -41,9 +41,11 @@ func (response *ResponseMapping) ResponseError(status int, identifier string, er
 func (response *ResponseMapping) populate() {
 	data := make(map[string]mapItem)
 	data["already_exist"] = mapItem{Message: "Alread exists", Code: 100000}
+	data["success"] = mapItem{Message: "Success", Code: 100006}
 	data["success_create"] = mapItem{Message: "Record successfully created", Code: 100009}
-	data["validate_failed"] = mapItem{Message: "Validation failed", Code: 100018}
 	data["error_create"] = mapItem{Message: "Unable to create record", Code: 100012}
+	data["error_list"] = mapItem{Message: "Unable to list record", Code: 100015}
+	data["validate_failed"] = mapItem{Message: "Validation failed", Code: 100018}
 
 	response.Mapping = data
 }

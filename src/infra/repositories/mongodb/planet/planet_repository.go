@@ -71,6 +71,24 @@ func (r Repository) FindByName(name string) (entities.Planet, error) {
 	return document, nil
 }
 
+func (r Repository) FindAll(filter bson.M) (entities.Planets, error) {
+	r.Logger.Info(Namespace.Concat("findAll"), "")
+
+	var planets entities.Planets
+
+	cursor, err := r.Collection.Find(r.Context, filter)
+	if err != nil {
+		return nil, err
+	}
+	for cursor.Next(r.Context) {
+		document := entities.Planet{}
+		cursor.Decode(&document)
+		planets = append(planets, document)
+	}
+
+	return planets, nil
+}
+
 func (r Repository) Create(document entities.PlanetCreate) (entities.Planet, error) {
 	r.Logger.Info(Namespace.Concat("Create"), "")
 

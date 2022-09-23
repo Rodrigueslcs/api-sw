@@ -22,6 +22,8 @@ type PlanetCreate struct {
 	Apparitions int    `json:"apparitions" bson:"Apparitions"`
 }
 
+type Planets []Planet
+
 func (m *PlanetCreate) Populate() {
 	if qtde, err := apisw.GetQtdeFilm(m.Name); err == nil {
 		m.Apparitions = qtde

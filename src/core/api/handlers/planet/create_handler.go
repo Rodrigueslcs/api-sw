@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-func (handler handler) CreateHandler(r *http.Request) communication.Response {
+func (handler handler) CreatePlanetHandler(r *http.Request) communication.Response {
 	Namespace.AddComponet("create_planet")
 
 	handler.Logger.Info(Namespace.Concat("CreatePlanetHandler"), "")
