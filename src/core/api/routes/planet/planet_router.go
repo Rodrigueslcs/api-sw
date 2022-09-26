@@ -12,6 +12,7 @@ func NewRoutes(router *chi.Mux, planetHandler planet.IHandler) {
 	router.Route("/api/v1/planet", func(r chi.Router) {
 		r.Post("/", middlewares.Handler(planetHandler.CreatePlanetHandler))
 		r.Get("/", middlewares.Handler(planetHandler.ListPlanetHandler))
+
 	})
 
 }

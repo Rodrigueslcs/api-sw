@@ -6,7 +6,6 @@ import (
 	"api-sw/src/shared/providers/logger"
 	"api-sw/src/shared/tools/namespace"
 	"context"
-	"fmt"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -42,7 +41,6 @@ func (r Repository) FindByID(id string) (entities.Planet, error) {
 
 	err := r.Collection.FindOne(r.Context, filter).Decode(&document)
 
-	fmt.Println(id)
 	if err == mongo.ErrNoDocuments {
 		return entities.Planet{}, nil
 	}
@@ -62,7 +60,9 @@ func (r Repository) FindByName(name string) (entities.Planet, error) {
 	filter := bson.M{"name": bson.M{"$regex": name, "$options": "i"}}
 
 	err := r.Collection.FindOne(r.Context, filter).Decode(&document)
+
 	if err == mongo.ErrNoDocuments {
+
 		return entities.Planet{}, nil
 	}
 	if err != nil {
