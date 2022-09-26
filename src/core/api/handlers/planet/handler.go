@@ -15,6 +15,7 @@ var Namespace = namespace.New("core.api.handlers.planet")
 type IHandler interface {
 	CreatePlanetHandler(r *http.Request) communication.Response
 	ListPlanetHandler(r *http.Request) communication.Response
+	DeletePlanetHandler(r *http.Request) communication.Response
 }
 
 type handler struct {

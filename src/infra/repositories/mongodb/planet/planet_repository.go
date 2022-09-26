@@ -6,6 +6,7 @@ import (
 	"api-sw/src/shared/providers/logger"
 	"api-sw/src/shared/tools/namespace"
 	"context"
+	"errors"
 
 	"go.mongodb.org/mongo-driver/bson"
 	"go.mongodb.org/mongo-driver/mongo"
@@ -98,4 +99,34 @@ func (r Repository) Create(document entities.PlanetCreate) (entities.Planet, err
 	}
 
 	return r.FindByID(document.ID)
+}
+
+func (r Repository) Update(id string, document any) (entities.Planet, error) {
+	r.Logger.Info(Namespace.Concat("Update"), "")
+
+	filter := bson.M{"_id": id}
+	update := bson.M{"$set": document}
+	_, err := r.Collection.UpdateOne(r.Context, filter, update)
+	if err != nil {
+		return entities.Planet{}, err
+	}
+
+	return r.FindByID(id)
+}
+
+func (r Repository) Delete(id string) error {
+	r.Logger.Info(Namespace.Concat("Delete"), "")
+	filter := bson.M{"_id": id}
+
+	deleteResult, err := r.Collection.DeleteOne(r.Context, filter)
+
+	if err != nil {
+		return err
+	}
+
+	if deleteResult.DeletedCount == 0 {
+		return errors.New("document not deleted")
+	}
+
+	return nil
 }
