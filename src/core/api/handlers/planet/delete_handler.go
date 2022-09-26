@@ -1,10 +1,9 @@
 package planet
 
 import (
+	"api-sw/src/shared/providers/httphelper"
 	"api-sw/src/shared/tools/communication"
 	"net/http"
-
-	"github.com/go-chi/chi"
 )
 
 func (handler handler) DeletePlanetHandler(r *http.Request) communication.Response {
@@ -13,7 +12,7 @@ func (handler handler) DeletePlanetHandler(r *http.Request) communication.Respon
 
 	handler.Logger.Info(Namespace.Concat("DeletePlanetHandler"), "")
 
-	id := chi.URLParam(r, "id")
+	id := httphelper.GetParam(r, "id")
 
 	service := handler.Service(ctx).Delete
 	return service.Execute(id)
