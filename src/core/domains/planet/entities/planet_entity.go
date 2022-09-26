@@ -22,6 +22,12 @@ type PlanetCreate struct {
 	Apparitions int    `json:"apparitions" bson:"Apparitions"`
 }
 
+type PlanetUpdate struct {
+	Name    string `json:"name" bson:"name"`
+	Climate string `json:"climate" bson:"climate"`
+	Terrain string `json:"terrain" bson:"terrain"`
+}
+
 type Planets []Planet
 
 func (m *PlanetCreate) Populate() {

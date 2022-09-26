@@ -51,7 +51,8 @@ func (response *ResponseMapping) populate() {
 	data["error_search"] = mapItem{Message: "Record not found", Code: 100008}
 	data["validate_failed"] = mapItem{Message: "Validation failed", Code: 100009}
 	data["planet_not_found"] = mapItem{Message: "Planet not found", Code: 1000010}
-	data["error_delete"] = mapItem{Message: "Unable to delete record", Code: 100011}
+	data["error_update"] = mapItem{Message: "Unable to update record", Code: 100011}
+	data["error_delete"] = mapItem{Message: "Unable to delete record", Code: 100012}
 
 	response.Mapping = data
 }

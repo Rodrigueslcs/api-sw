@@ -7,6 +7,7 @@ import (
 	"api-sw/src/core/domains/planet/services/getbyid"
 	"api-sw/src/core/domains/planet/services/getbyname"
 	"api-sw/src/core/domains/planet/services/list"
+	"api-sw/src/core/domains/planet/services/update"
 	"api-sw/src/shared/providers/logger"
 	"context"
 )
@@ -23,6 +24,7 @@ type Services struct {
 	GetByID   getbyid.Service
 	GetByName getbyname.Service
 	Delete    delete.Service
+	Update    update.Service
 }
 
 func NewPlanet(dep Dependecies) *Services {
@@ -44,6 +46,10 @@ func NewPlanet(dep Dependecies) *Services {
 			Logger:     dep.Logger,
 		},
 		Delete: delete.Service{
+			Repository: dep.Repository,
+			Logger:     dep.Logger,
+		},
+		Update: update.Service{
 			Repository: dep.Repository,
 			Logger:     dep.Logger,
 		},

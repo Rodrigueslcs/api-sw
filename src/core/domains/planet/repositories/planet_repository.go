@@ -11,5 +11,6 @@ type IPlanetRepository interface {
 	FindByID(id string) (entities.Planet, error)
 	FindByName(name string) (entities.Planet, error)
 	FindAll(filter bson.M) (entities.Planets, error)
+	Update(id string, document entities.PlanetUpdate) (entities.Planet, error)
 	Delete(id string) error
 }

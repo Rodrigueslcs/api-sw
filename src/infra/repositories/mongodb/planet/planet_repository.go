@@ -101,7 +101,7 @@ func (r Repository) Create(document entities.PlanetCreate) (entities.Planet, err
 	return r.FindByID(document.ID)
 }
 
-func (r Repository) Update(id string, document any) (entities.Planet, error) {
+func (r Repository) Update(id string, document entities.PlanetUpdate) (entities.Planet, error) {
 	r.Logger.Info(Namespace.Concat("Update"), "")
 
 	filter := bson.M{"_id": id}

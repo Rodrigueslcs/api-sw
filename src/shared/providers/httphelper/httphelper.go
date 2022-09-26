@@ -9,7 +9,7 @@ import (
 	"github.com/go-chi/chi"
 )
 
-func getParam(r *http.Request, key string) string {
+func GetParam(r *http.Request, key string) string {
 	return chi.URLParam(r, key)
 }
 
